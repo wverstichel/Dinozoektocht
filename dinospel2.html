@@ -1,40 +1,224 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dino Decoder - Jungle</title>
-    <style>
-        /* Basis & Thema (Prehistorisch Groen / Vulkaangrijs) */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #f4f4f4;
+    <!DOCTYPE html>
+    <html lang="nl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dino Decoder - Jungle</title>
+        <style>
+            /* Basis & Thema (Prehistorisch Groen / Vulkaangrijs) */
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                color: #f4f4f4;
 
-            /* NIEUW: De prehistorische achtergrondtekening */
-            background-color: #2a2d32; /* Fallback kleur */
-            background-image: 
-                linear-gradient(rgba(42, 45, 50, 0.8), rgba(42, 45, 50, 0.9)), /* Subtiele overlay voor leesbaarheid */
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%231a402e"/><stop offset="100%" stop-color="%230c1d15"/></linearGradient><clipPath id="swamp"><rect x="0" y="700" width="1000" height="300"/></clipPath></defs><rect width="1000" height="1000" fill="url(%23sky)"/><g id="volcano" transform="translate(700, 300)"><path d="M0,400 L300,400 L150,0 Z" fill="%234a4a4a"/><path d="M120,40 Q150,0 180,40" fill="%23333"/><ellipse cx="150" cy="20" rx="30" ry="10" fill="%23111"/><ellipse cx="150" cy="15" rx="15" ry="5" fill="%23f44"/></g><g id="jungle"><path d="M0,600 Q150,450 300,600 T600,600 T1000,600 L1000,1000 L0,1000 Z" fill="%230d3d2a"/><path d="M0,650 Q200,550 400,650 T800,650 T1000,650 L1000,1000 L0,1000 Z" fill="%231a5c3e"/><path d="M-50,750 Q100,600 300,750 T700,750 T1050,750 L1050,1050 L-50,1050 Z" fill="%2324734f"/><circle cx="100" cy="700" r="150" fill="%232a8259" opacity="0.6"/><circle cx="300" cy="730" r="130" fill="%232a8259" opacity="0.6"/><circle cx="600" cy="680" r="160" fill="%232a8259" opacity="0.6"/><circle cx="850" cy="720" r="140" fill="%232a8259" opacity="0.6"/></g><g id="trex" transform="translate(150, 480) scale(1.5)"><path d="M20,100 Q40,60 60,100 Q80,140 100,100 Q120,60 140,100" fill="%232e4d3a"/><path d="M30,100 L130,100 L80,30 Z" fill="%233a6148"/><path d="M20,100 Q40,90 60,100 Q80,110 100,100 Q120,90 140,100 L140,120 L20,120 Z" fill="%233a6148"/><ellipse cx="130" cy="90" rx="5" ry="10" fill="%23111"/><path d="M125,95 L135,95 L130,85 Z" fill="%23fff" transform="rotate(20 130 90)"/><path d="M40,120 L120,120" stroke="%23f00" stroke-width="5" transform="rotate(-15 80 120)"/><path d="M110,80 Q140,60 160,80 L160,110 L110,110 Z" fill="%233a6148" transform="rotate(-20 135 95)"/></g><g id="sauropod" transform="translate(600, 580) scale(1.2)"><path d="M0,150 Q100,50 200,150 Q300,250 400,150" fill="%2333664d"/><path d="M50,150 L350,150 L200,80 Z" fill="%23408060"/><path d="M20,150 Q50,140 80,150 Q110,160 140,150 L140,180 L20,180 Z" fill="%23408060"/><path d="M180,80 Q190,0 200,80 Z" fill="%23408060"/><path d="M195,30 Q200,20 205,30 Z" fill="%23408060"/><ellipse cx="200" cy="20" rx="3" ry="5" fill="%23111"/></g><path d="M20,550 Q60,500 100,550 T180,550 L180,750 L20,750 Z" fill="%232a8259"/><path d="M820,580 Q860,530 900,580 T980,580 L980,780 L820,780 Z" fill="%232a8259"/></svg>');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+                /* NIEUW: De prehistorische achtergrondtekening */
+                background-color: #2a2d32; /* Fallback kleur */
+                background-image: 
+                    linear-gradient(rgba(42, 45, 50, 0.8), rgba(42, 45, 50, 0.9)), /* Subtiele overlay voor leesbaarheid */
+                    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%231a402e"/><stop offset="100%" stop-color="%230c1d15"/></linearGradient><clipPath id="swamp"><rect x="0" y="700" width="1000" height="300"/></clipPath></defs><rect width="1000" height="1000" fill="url(%23sky)"/><g id="volcano" transform="translate(700, 300)"><path d="M0,400 L300,400 L150,0 Z" fill="%234a4a4a"/><path d="M120,40 Q150,0 180,40" fill="%23333"/><ellipse cx="150" cy="20" rx="30" ry="10" fill="%23111"/><ellipse cx="150" cy="15" rx="15" ry="5" fill="%23f44"/></g><g id="jungle"><path d="M0,600 Q150,450 300,600 T600,600 T1000,600 L1000,1000 L0,1000 Z" fill="%230d3d2a"/><path d="M0,650 Q200,550 400,650 T800,650 T1000,650 L1000,1000 L0,1000 Z" fill="%231a5c3e"/><path d="M-50,750 Q100,600 300,750 T700,750 T1050,750 L1050,1050 L-50,1050 Z" fill="%2324734f"/><circle cx="100" cy="700" r="150" fill="%232a8259" opacity="0.6"/><circle cx="300" cy="730" r="130" fill="%232a8259" opacity="0.6"/><circle cx="600" cy="680" r="160" fill="%232a8259" opacity="0.6"/><circle cx="850" cy="720" r="140" fill="%232a8259" opacity="0.6"/></g><g id="trex" transform="translate(150, 480) scale(1.5)"><path d="M20,100 Q40,60 60,100 Q80,140 100,100 Q120,60 140,100" fill="%232e4d3a"/><path d="M30,100 L130,100 L80,30 Z" fill="%233a6148"/><path d="M20,100 Q40,90 60,100 Q80,110 100,100 Q120,90 140,100 L140,120 L20,120 Z" fill="%233a6148"/><ellipse cx="130" cy="90" rx="5" ry="10" fill="%23111"/><path d="M125,95 L135,95 L130,85 Z" fill="%23fff" transform="rotate(20 130 90)"/><path d="M40,120 L120,120" stroke="%23f00" stroke-width="5" transform="rotate(-15 80 120)"/><path d="M110,80 Q140,60 160,80 L160,110 L110,110 Z" fill="%233a6148" transform="rotate(-20 135 95)"/></g><g id="sauropod" transform="translate(600, 580) scale(1.2)"><path d="M0,150 Q100,50 200,150 Q300,250 400,150" fill="%2333664d"/><path d="M50,150 L350,150 L200,80 Z" fill="%23408060"/><path d="M20,150 Q50,140 80,150 Q110,160 140,150 L140,180 L20,180 Z" fill="%23408060"/><path d="M180,80 Q190,0 200,80 Z" fill="%23408060"/><path d="M195,30 Q200,20 205,30 Z" fill="%23408060"/><ellipse cx="200" cy="20" rx="3" ry="5" fill="%23111"/></g><path d="M20,550 Q60,500 100,550 T180,550 L180,750 L20,750 Z" fill="%232a8259"/><path d="M820,580 Q860,530 900,580 T980,580 L980,780 L820,780 Z" fill="%232a8259"/></svg>');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            .container {
+                background-color: rgba(59, 64, 72, 0.9); /* Licht doorschijnend */
+                padding: 30px;
+                border-radius: 20px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+                text-align: center;
+                width: 100%;
+                max-width: 400px;
+                border: 3px solid #8bc34a;
+                backdrop-filter: blur(5px); /* Vervaagt de achtergrond achter de container */
+            }
+
+            h1 {
+                color: #8bc34a;
+                margin-top: 0;
+                font-size: 2rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+
+            .dino-avatar {
+                font-size: 5rem;
+                margin: 20px 0;
+                animation: bounce 2s infinite ease-in-out;
+            }
+
+            input[type="text"] {
+                width: 100%;
+                padding: 15px;
+                font-size: 1.1rem;
+                border: 2px solid #5c6370;
+                border-radius: 10px;
+                background-color: rgba(30, 34, 39, 0.8);
+                color: #fff;
+                box-sizing: border-box;
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            input[type="text"]:focus {
+                outline: none;
+                border-color: #8bc34a;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+                font-size: 1.1rem;
+                font-weight: bold;
+                background-color: #8bc34a;
+                color: #1e2227;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.1s;
+                text-transform: uppercase;
+                box-shadow: 0 4px 0 #689f38;
+            }
+
+            button:active {
+                background-color: #689f38;
+                transform: translateY(2px);
+                box-shadow: 0 2px 0 #689f38;
+            }
+
+            .output-box {
+                margin-top: 25px;
+                padding: 15px;
+                background-color: rgba(30, 34, 39, 0.8);
+                border-radius: 10px;
+                border-left: 5px solid #ff5722;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                font-style: italic;
+            }
+
+            /* Leuke animatie voor de dino */
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <h1>Dino Decoder</h1>
+        <div class="dino-avatar" id="dino">🦖</div>
+        
+        <input type="text" id="userInput" placeholder="Typ een geheim woord..." autocomplete="off">
+        <button onclick="verwerkWoord()">Brul de boodschap!</button>
+
+        <div class="output-box" id="output">
+            De T-Rex wacht in de jungle...
+        </div>
+    </div>
+
+    <script>
+        // Dezelfde logica als voorheen
+        function verwerkWoord() {
+            const input = document.getElementById('userInput').value.trim().toLowerCase();
+            const outputDiv = document.getElementById('output');
+            const dinoDiv = document.getElementById('dino');
+            
+            let boodschap = "";
+            
+            if (input === "") {
+                boodschap = "De dino hoort niks in de jungle... Typ een woord!";
+                dinoDiv.innerHTML = "💤";
+            } else if (input === "meteoriet" || input === "vulkaan") {
+                boodschap = "GEVAAR! De vulkaan barst uit! Rennen! 🌋💥";
+                dinoDiv.innerHTML = "🦕";
+            } else if (input === "vlees" || input === "steak") {
+                boodschap = "RAWWRR! De T-Rex verslindt het meteen. Heerlijk!";
+                dinoDiv.innerHTML = "🦖";
+            } else if (input === "plant" || input === "blaadjes") {
+                boodschap = "De Brachiosaurus kauwt rustig op een sappig groen takje. 🌿";
+                dinoDiv.innerHTML = "🦕";
+            } else if (input === "pterodactyl") {
+                boodschap = "KRIJS! Er vliegt iets over met een gigantische spanwijdte!";
+                dinoDiv.innerHTML = "🦅";
+            } else if (input === "boris") {
+                boodschap = "GELUKKIGE VERJAAAAAARRRRDAG!";
+                dinoDiv.innerHTML = "🦅";
+
+            } else if (input === "t-rex") {
+                boodschap = "Vind een tak die langer is dan de mama en papa van Boris!";
+                dinoDiv.innerHTML = "🦖";
+            } else if (input === "t-rex gelukt") {
+                boodschap = "Ga naar nummer 12. GRRRAAAUWWW!";
+                dinoDiv.innerHTML = "🦖";
+            } else if (input === "gazelle") {
+                boodschap = "Hou 2 ballonnen 1 minuut in de lucht!";
+                dinoDiv.innerHTML = "🎈";
+            } else if (input === "gazelle gelukt") {
+                boodschap = "Ga naar nummer 10. Byekes, ciaokes!";
+                dinoDiv.innerHTML = "🎈"; 
+
+            } else if (input === "paard") {
+                boodschap = "Doe het lepel-en-knikker-spel";
+                dinoDiv.innerHTML = "🐎";
+            } else if (input === "paard gelukt") {
+                boodschap = "Ga naar nummer 8. Iiiii-hihihihihiii";
+                dinoDiv.innerHTML = "🐎";
+            
+            } else if (input === "tijger") {
+                boodschap = "3 minuten WOESHEN!";
+                dinoDiv.innerHTML = "🐅";
+            } else if (input === "tijger gelukt") {
+                boodschap = "Ga naar nummer 6. GRRRRRRR!";
+                dinoDiv.innerHTML = "🐅";
+
+
+            } else if (input === "beer") {
+                boodschap = "Doe de spion!";
+                dinoDiv.innerHTML = "🐻";
+            } else if (input === "beer gelukt") {
+                boodschap = "Ga naar nummer 4. BRULLLL!";
+                dinoDiv.innerHTML = "🐻";
+
+            } else if (input === "koe") {
+                boodschap = "Doe het koekjesspel!";
+                dinoDiv.innerHTML = "🐮";
+            } else if (input === "koe gelukt") {
+                boodschap = "Ga naar de schat op nummer 13! Meuhhhhh";
+                dinoDiv.innerHTML = "🐮";
+            
+            
+
+            }
+            else {
+                boodschap = `De T-Rex heeft '${input}' geanalyseerd en zegt: "ROARRR! Dat klinkt prehistorisch cool!"`;
+                dinoDiv.innerHTML = "🦖";
+            }
+            
+            outputDiv.innerHTML = boodschap;
+            document.getElementById('userInput').value = "";
         }
 
-        .container {
-            background-color: rgba(59, 64, 72, 0.9); /* Licht doorschijnend */
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                verwerkWoord();
+            }
+        });
+    </script>
+
+    </body>
+    </html>            max-width: 400px;
             border: 3px solid #8bc34a;
             backdrop-filter: blur(5px); /* Vervaagt de achtergrond achter de container */
         }
